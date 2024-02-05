@@ -1,0 +1,25 @@
+.display-panel{
+    height: 85vh;
+    border-style: solid;
+    margin:20px;
+}
+
+.input-field{
+    height:10vh;
+    font-size: 20px;
+    margin-left:20px;
+    line-height: 1;
+    text-align: left;
+    border-radius: 5px;
+    resize: none;
+}
+
+.user-input-space{
+    display: grid;
+    grid-template-columns: 1fr 200px;
+}
+
+.submit-text{
+    margin-left:10px;
+    margin-right: 10px;
+}

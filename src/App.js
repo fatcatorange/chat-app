@@ -1,24 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import ChatBoard from './ChatBoard';
+import FindMatching from './FindMatching';
+import StartChat from './StartChat';
 
 function App() {
+
+  const [chatting,setChatting] = React.useState(0) //0代表首頁 1代表尋找中 2代表正在聊
+  let display
+  if(chatting === 0)
+  {
+    display = <StartChat startFind = {()=>setChatting(1)}/>
+  }
+  else if(chatting === 1)
+  {
+    display = <FindMatching endFind = {()=>setChatting(0)} findMatch = {()=>setChatting(2)}/>
+  }
+  else
+  {
+    display = <ChatBoard/>
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      {
+        display
+      }  
+    </main>
   );
 }
 
