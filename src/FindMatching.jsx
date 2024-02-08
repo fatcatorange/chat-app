@@ -22,14 +22,14 @@ export default function FindMatching(props)
   let init = 0;
   let nowWaitID = "?";
 
-  React.useEffect(() => {
+  React.useEffect(() => { //開始等待
     const unsubscribe = onSnapshot(waitingListCollection, function (snapshot) {
         const waitingList = snapshot.docs.map(doc => ({
             ...doc.data(),
             id: doc.id
         }))
         setWaitingList(waitingList)
-        if(nowWaitID!="?")
+        if(nowWaitID!=="?")
         {
           console.log(nowWaitID)
           const findRef = doc(db,"waitingList",nowWaitID)
@@ -37,6 +37,7 @@ export default function FindMatching(props)
           .then((findDoc)=>{
             if(findDoc.exists() === false)
             {
+              props.setUserID(1)
               console.log("開始跟吉米聊天!")
               props.findMatch()
             }
@@ -62,6 +63,8 @@ export default function FindMatching(props)
             deleteDoc(delRef)
             .then((docSnap)=>{
               console.log("配對到吉米了")
+              props.setUserID(2)
+              props.setChatRoom(match)
               props.findMatch()
             })
           })
@@ -80,10 +83,8 @@ export default function FindMatching(props)
 
   function createNewChat() {
     const newChat = {
-        body:{
-          user1:"壯祖豪",
-          user2:""
-        }
+      chatContent:[],
+      user:2
     }
     addDoc(chatCollection, newChat)
     .then((newChatRef) => {
@@ -93,6 +94,7 @@ export default function FindMatching(props)
     
     
   }
+  const [waitID,setWaitID] = React.useState()
 
   function createNewWait(chatID){
     const newWait ={
@@ -101,15 +103,47 @@ export default function FindMatching(props)
     addDoc(waitingListCollection, newWait)
     .then((newWaitRef) =>{
       nowWaitID = (newWaitRef.id)
-      console.log("創建吉米了")
+      console.log("創建吉米了"+nowWaitID)
+      setWaitID(()=>(nowWaitID))
+      props.setChatRoom(chatID)
     })
   }
 
+  function endFind(){
+    console.log(waitID)
+    const delRef = doc(db,"waitingList",waitID)
+    deleteDoc(delRef)
+    .then(console.log("刪掉等待列"))
+    const delChatRef = doc(db,"chatList",nowChatID)
+    deleteDoc(delChatRef)
+    .then(console.log("刪掉聊天室"))
+    props.endFind();
+  }
+  
+  React.useEffect(() => {
+    const handleWindowClose = (event) => {
+      console.log(nowChatID)
+      const delRef = doc(db,"waitingList",waitID)
+      deleteDoc(delRef)
+      .then(console.log("刪掉等待列"))
+      const delChatRef = doc(db,"chatList",nowChatID)
+      deleteDoc(delChatRef)
+      .then(console.log("刪掉聊天室"))
+      
+      
+    };
+
+    window.addEventListener('beforeunload', handleWindowClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose);
+    };
+  }, [nowChatID,waitID]);
   
     
     return (
         <div className='background'>
-          <button className='start-button' onClick={props.endFind}>
+          <button className='start-button' onClick={endFind}>
             不找了
           </button>
         </div>

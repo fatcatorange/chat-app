@@ -1,17 +1,24 @@
+.display-container{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 6fr 1fr;
+}
+
 .display-panel{
-    height: 85vh;
     border-style: solid;
     margin:20px;
+    padding:30px;
+    overflow: auto;
 }
 
 .input-field{
-    height:8vh;
     font-size: 20px;
     margin-left:20px;
     line-height: 1;
     text-align: left;
     border-radius: 5px;
     resize: none;
+    margin-bottom: 20px;
 }
 
 .user-input-space{
@@ -22,4 +29,35 @@
 .submit-text{
     margin-left:10px;
     margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.back-to-start{
+    margin-left:20px;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top:20px;
+    width:10vw;
+}
+
+.content-container{
+    display: flex;
+}
+
+.other-content{
+    margin-right: auto;
+    padding: 20px;
+    border-style: solid;
+    max-width: 40%;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+}
+
+.user-content{
+    margin-left: auto;
+    padding: 20px;
+    border-style: solid;
+    max-width: 40%;
+    word-wrap: break-word;
+    margin-bottom: 20px;
 }
