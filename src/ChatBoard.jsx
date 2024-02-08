@@ -66,7 +66,6 @@ export default function ChatBoard(props)
 
     function changeInput(event){
         changeInputValue(event.target.value)
-        console.log(event.target.value)
     }
 
     function backToStart()
@@ -130,9 +129,9 @@ export default function ChatBoard(props)
         }
     },[userCount])
 
-    React.useEffect(() => {
-
-    
+    React.useEffect((event) => {
+        
+        window.removeEventListener('beforeunload', backToStart);
         window.addEventListener('beforeunload', backToStart);
     
         return () => {
@@ -152,6 +151,7 @@ export default function ChatBoard(props)
                 <textarea
                     type = "text"
                     id="nowInput"
+                    placeholder="輸入訊息"
                     value = {inputValue}
                     onChange = {changeInput}
                     className="input-field"

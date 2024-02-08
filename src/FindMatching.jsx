@@ -1,4 +1,5 @@
 import React  from "react";
+import waitImg from "./image/pepe-wait.gif"
 import { waitingListCollection,chatCollection, db } from "./firebase"
 import {
     onSnapshot,
@@ -133,6 +134,7 @@ export default function FindMatching(props)
       
     };
 
+    window.removeEventListener('beforeunload', handleWindowClose);
     window.addEventListener('beforeunload', handleWindowClose);
 
     return () => {
@@ -143,6 +145,10 @@ export default function FindMatching(props)
     
     return (
         <div className='background'>
+          <div className="title">
+            HUSH HUB
+          </div>
+          <img src={waitImg} className="wait-image" />
           <button className='start-button' onClick={endFind}>
             不找了
           </button>

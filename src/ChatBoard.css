@@ -1,15 +1,21 @@
 .display-container{
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 6fr 70px;
+    padding-left: 20%;
+    padding-right: 20%;
+    background-image: url(image/polka-dots-938425_1280.jpg);
 }
 
 .display-panel{
-    border-style: solid;
     margin:20px;
     padding:30px;
     overflow: auto;
+    border-radius: 20px;
+    background-color: lightyellow;
 }
+
+
 
 .input-field{
     font-size: 20px;
@@ -19,17 +25,28 @@
     border-radius: 5px;
     resize: none;
     margin-bottom: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .user-input-space{
     display: grid;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr 120px;
 }
 
 .submit-text{
     margin-left:10px;
     margin-right: 10px;
     margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: lightgreen;
+    font-weight: bold;
+}
+
+.submit-text:hover{
+    background-color: greenyellow;
 }
 
 .back-to-start{
@@ -38,26 +55,46 @@
     margin-bottom: 20px;
     margin-top:20px;
     width:10vw;
+    border-radius: 5vw;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+}
+
+.back-to-start:hover{
+    background-color: brown;
 }
 
 .content-container{
     display: flex;
 }
 
+
 .other-content{
     margin-right: auto;
-    padding: 20px;
+    padding: 5px;
+    padding-left:15px;
+    padding-right: 15px;
     border-style: solid;
     max-width: 40%;
     word-wrap: break-word;
     margin-bottom: 20px;
+    font-size:20px;
+    border-radius: 20px;
+    background-color: white;
 }
 
 .user-content{
     margin-left: auto;
-    padding: 20px;
+    padding: 5px;
+    padding-left:15px;
+    padding-right: 15px;
     border-style: solid;
     max-width: 40%;
     word-wrap: break-word;
     margin-bottom: 20px;
+    font-size:20px;
+    border-radius: 20px;
+    background-color: lightgray;
 }
