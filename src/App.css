@@ -6,7 +6,7 @@ body{
     background-color: pink;
     height:100vh;
     position: relative;
-    background-image: url(image/polka-dots-938425_1280.jpg);
+    background: linear-gradient(to bottom, #ff6b81, #c98084);
 }
 
 .start-button{

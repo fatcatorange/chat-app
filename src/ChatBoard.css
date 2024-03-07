@@ -4,7 +4,7 @@
     grid-template-rows: 1fr 6fr 70px;
     padding-left: 20%;
     padding-right: 20%;
-    background-image: url(image/polka-dots-938425_1280.jpg);
+    background: linear-gradient(to bottom, #ff6b81, #c98084);
 }
 
 .display-panel{
